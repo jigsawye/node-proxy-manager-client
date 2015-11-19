@@ -1,0 +1,72 @@
+{
+  "name": "node-proxy-manager-server",
+  "version": "0.0.1",
+  "description": "The client dashboard for proxy manager.",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "repository": "jigsawye/node-proxy-manager-client",
+  "author": {
+    "name": "Jigsaw Ye",
+    "email": "jigsaw.ye@gmail.com",
+    "url": "github.com/jigsawye/node-proxy-manager-client"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "clean": "rimraf lib dist coverage",
+    "lint": "eslint src test",
+    "test": "NODE_ENV=test mocha --compilers js:babel/register --recursive --require ./test/setup.js",
+    "test:watch": "npm test -- --watch",
+    "test:cov": "NODE_ENV=test babel-node $(npm bin)/isparta cover $(npm bin)/_mocha -- --recursive",
+    "check": "npm run lint && npm run test ",
+    "build": "webpack src/index.js --config webpack.config.production.js",
+    "preversion": "npm run clean && npm run check",
+    "version": "npm run build",
+    "postversion": "git push && git push --tags && npm run clean",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "keywords": [
+    "redux"
+  ],
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-core": "^5.8.25",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^5.3.2",
+    "babel-plugin-react-transform": "^1.1.1",
+    "chai": "^3.3.0",
+    "eslint": "^1.6.0",
+    "eslint-config-airbnb": "^0.1.0",
+    "eslint-plugin-react": "^3.5.1",
+    "express": "^4.13.3",
+    "isparta": "^3.1.0",
+    "jsdom": "^6.5.1",
+    "mocha": "^2.2.5",
+    "proxyquire": "^1.7.3",
+    "react-addons-test-utils": "^0.14.0",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-hmr": "^1.0.0",
+    "redbox-react": "^1.1.1",
+    "redux-devtools": "^2.1.5",
+    "rimraf": "^2.4.3",
+    "sinon": "^1.17.1",
+    "webpack": "^1.12.2",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.4.1"
+  },
+  "dependencies": {
+    "history": "^1.13.0",
+    "isomorphic-fetch": "^2.2.0",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-redux": "^4.0.0",
+    "react-router": "^1.0.0",
+    "redux": "^3.0.2",
+    "redux-logger": "^2.0.3",
+    "redux-promise": "^0.5.0",
+    "redux-simple-router": "0.0.8",
+    "redux-thunk": "^1.0.0"
+  }
+}
