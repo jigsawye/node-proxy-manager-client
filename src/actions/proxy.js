@@ -29,7 +29,7 @@ function proxiesFailure(err) {
 export function proxiesRequest() {
   return dispatch => {
     dispatch(appLoading());
-    return fetchAPI('get', '/proxies')
+    return fetchAPI('get', 'proxies')
       .then(json => dispatch(proxiesSuccess(json)))
       .catch(json => dispatch(proxiesFailure(json)));
   };
