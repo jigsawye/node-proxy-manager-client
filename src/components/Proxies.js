@@ -51,7 +51,7 @@ export default class Proxies extends Component {
               {proxies.map((proxy, index) => {
                 return (
                   <tr key={index}>
-                      <td>{index}</td>
+                      <td>{proxy.id}</td>
                       <td>{`${proxy.listen.host}(${proxy.listen.port})`}</td>
                       <td>{`${proxy.target.host}(${proxy.target.port})`}</td>
                       <td><a href="#">more</a></td>
