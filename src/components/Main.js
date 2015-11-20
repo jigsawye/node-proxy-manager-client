@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { IndexLink } from 'react-router';
+import { Link } from 'react-router';
 
 export default class Main extends Component {
 
@@ -27,7 +27,7 @@ export default class Main extends Component {
           <div className="col-lg-8 col-lg-offset-2">
             <nav className="navbar navbar-default">
                 <div className="navbar-header">
-                  <IndexLink to="/" className="navbar-brand">Proxy Manager</IndexLink>
+                  <Link to="/proxies" className="navbar-brand">Proxy Manager</Link>
                 </div>
 
                 <div className="navbar-collapse">
