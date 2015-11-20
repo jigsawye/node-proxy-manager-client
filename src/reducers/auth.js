@@ -1,7 +1,7 @@
 import {
   LOGIN_SUBMITING,
   LOGIN_SUCCESS,
-  LOGIN_FAIL,
+  LOGIN_FAILURE,
   LOGOUT,
 } from '../actions/auth';
 import { login, logout } from '../utils/auth';
@@ -19,7 +19,7 @@ export default function auth(state = defaultState, action) {
     return Object.assign({}, state, {
       isLoginSubmitting: true
     });
-  case LOGIN_FAIL:
+  case LOGIN_FAILURE:
     return Object.assign({}, state, {
       isLoginSubmitting: false,
       loginFail: true,
