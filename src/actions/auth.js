@@ -13,11 +13,10 @@ function loginSubmiting() {
   };
 }
 
-function loginSuccess(token, username) {
+function loginSuccess(token) {
   return {
     type: LOGIN_SUCCESS,
     token,
-    username,
   };
 }
 
@@ -39,7 +38,7 @@ export function loginSubmit(user) {
     dispatch(loginSubmiting());
     return fetchAPI('post', 'auth/login', user)
       .then(json => {
-        dispatch(loginSuccess(json.token, user.username));
+        dispatch(loginSuccess(json.token));
         dispatch(updatePath('/proxies'));
       })
       .catch(json => dispatch(loginFailure(json.error)));

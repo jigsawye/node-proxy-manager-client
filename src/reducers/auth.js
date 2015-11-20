@@ -10,7 +10,6 @@ const defaultState = {
   isLoginSubmitting: false,
   loginFail: false,
   loginFailMessage: '',
-  username: '',
 };
 
 export default function auth(state = defaultState, action) {

@@ -48,8 +48,7 @@ export default class LoginForm extends Component {
             <div className="form-group">
               <div className="col-sm-10 col-sm-offset-2">
                 <button type="submit" className="btn btn-primary" disabled={isLoginSubmitting}>
-                {/** isLoginSubmitting ? <i className="fa fa-circle-o-notch fa-spin"></i> : null **/}
-                Login
+                  Login
                 </button>
               </div>
             </div>
