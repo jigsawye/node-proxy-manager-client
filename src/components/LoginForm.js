@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-
-export default class Counter extends Component {
+export default class LoginForm extends Component {
 
   static propTypes = {
     loginSubmit: PropTypes.func.isRequired,

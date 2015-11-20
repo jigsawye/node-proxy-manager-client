@@ -13,7 +13,7 @@ const defaultState = {
   username: '',
 };
 
-export default function counter(state = defaultState, action) {
+export default function auth(state = defaultState, action) {
   switch (action.type) {
   case LOGIN_SUBMITING:
     return Object.assign({}, state, {
