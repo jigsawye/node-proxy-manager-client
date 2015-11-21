@@ -28,8 +28,16 @@ export default class Navigation extends Component {
 
           <div className="navbar-collapse">
             <ul className="nav navbar-nav navbar-right">
-              { isLogined ? <p className="navbar-text">Auth Success</p> : null }
-              { isLogined ? <li><a href="#" onClick={::this.handleLogout}>Logout</a></li> : null }
+              { isLogined &&
+                <p className="navbar-text" style={{color: '#28b62c'}}>
+                  <i className="fa fa-check-circle"></i>Auth Success
+                </p> }
+              { isLogined &&
+                <li>
+                  <a href="#" onClick={::this.handleLogout}>
+                    <i className="fa fa-sign-out"></i>Logout
+                  </a>
+                </li> }
             </ul>
           </div>
       </nav>
