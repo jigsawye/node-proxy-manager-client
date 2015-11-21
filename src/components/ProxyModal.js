@@ -24,12 +24,13 @@ export default class ProxyModal extends Component {
 
   static propTypes = {
     modalIsOpen: PropTypes.bool.isRequired,
+    modalType: PropTypes.number.isRequired,
     closeModal: PropTypes.func.isRequired,
     proxy: PropTypes.object,
   }
 
   render() {
-    const { modalIsOpen, closeModal } = this.props;
+    const { modalIsOpen, modalType, closeModal } = this.props;
 
     return (
       <Modal
@@ -45,7 +46,7 @@ export default class ProxyModal extends Component {
               <span aria-hidden="true">&times;</span>
               <span className="sr-only">Close</span>
             </button>
-            <h4 className="modal-title">Edit proxy: #ID</h4>
+            <h4 className="modal-title">{(modalType === 0) ? 'Add Proxy' : 'Edit proxy'}</h4>
           </div>
           <div className="modal-body">
             <form className="form-horizontal">
@@ -77,7 +78,9 @@ export default class ProxyModal extends Component {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-default" onClick={() => closeModal()}>Close</button>
-            <button type="button" className="btn btn-primary" onClick={() => {}}>Save changes</button>
+            <button type="button" className="btn btn-primary" onClick={() => {}}>
+              {(modalType === 0) ? 'Create' : 'Save'}
+            </button>
           </div>
         </div>
       </Modal>

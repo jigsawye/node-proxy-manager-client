@@ -30,7 +30,7 @@ export default class Proxies extends Component {
     return (
       <div className="panel panel-default">
         <div className="panel-heading clearfix" style={{padding: '5px 10px'}}>
-          <button className="btn btn-success btn-sm pull-right" onClick={() => openModal()}>
+          <button className="btn btn-success btn-sm pull-right" onClick={() => openModal(0)}>
             <i className="fa fa-plus"></i> Add Proxy
           </button>
           <h3 className="panel-title" style={{margin: '5px 0', fontSize: '20px'}}>
