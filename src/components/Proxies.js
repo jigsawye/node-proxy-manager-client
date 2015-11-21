@@ -15,9 +15,13 @@ export default class Proxies extends Component {
     const { proxiesRequest } = this.props;
     proxiesRequest();
 
-    setInterval(() => {
+    this.updateProxies = setInterval(() => {
       proxiesRequest();
     }, 10000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.updateProxies);
   }
 
   render() {
