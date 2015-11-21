@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ProxyModal from './ProxyModal';
 
 export default class Proxies extends Component {
 
@@ -7,6 +8,7 @@ export default class Proxies extends Component {
     isError: PropTypes.bool.isRequired,
     errorMessage: PropTypes.string,
     proxiesRequest: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -19,12 +21,13 @@ export default class Proxies extends Component {
   }
 
   render() {
-    const { isError, errorMessage, proxies } = this.props;
+    const { isError, errorMessage, proxies, openModal } = this.props;
 
     return (
       <div className="panel panel-default">
-        <div className="panel-heading">
-          <div className="panel-title">Proxies</div>
+        <div className="panel-heading clearfix" style={{padding: '5px 10px'}}>
+          <button className="btn btn-success btn-sm pull-right" onClick={() => openModal()}>Add Proxy</button>
+          <h3 className="panel-title" style={{margin: '5px 0', fontSize: '20px'}}>Proxies</h3>
         </div>
         { isError &&
           <div className="panel-body">
@@ -54,6 +57,7 @@ export default class Proxies extends Component {
             </tbody>
           </table>
         }
+        <ProxyModal {...this.props}/>
       </div>
     );
   }
