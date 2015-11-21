@@ -10,7 +10,7 @@ const defaultState = {
   isError: false,
   errorMessage: '',
   proxy: {},
-  modalOpen: false,
+  modalIsOpen: false,
 };
 
 export default function proxy(state = defaultState, action) {
@@ -20,9 +20,9 @@ export default function proxy(state = defaultState, action) {
   case PROXIES_FAILURE:
     return Object.assign({}, ...defaultState, { isError: true, errorMessage: action.err });
   case OPEN_MODAL:
-    return Object.assign({}, ...state, { modalOpen: true });
+    return Object.assign({}, ...state, { modalIsOpen: true });
   case CLOSE_MODAL:
-    return Object.assign({}, ...state, { modalOpen: false });
+    return Object.assign({}, ...state, { modalIsOpen: false });
   default:
     return state;
   }

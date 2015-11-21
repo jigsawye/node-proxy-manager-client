@@ -23,20 +23,20 @@ const resetModalStyle = {
 export default class ProxyModal extends Component {
 
   static propTypes = {
-    modalOpen: PropTypes.bool.isRequired,
+    modalIsOpen: PropTypes.bool.isRequired,
     closeModal: PropTypes.func.isRequired,
     proxy: PropTypes.object,
   }
 
   render() {
-    const { modalOpen, closeModal } = this.props;
+    const { modalIsOpen, closeModal } = this.props;
 
     return (
       <Modal
         closeTimeoutMS={150}
         className="Modal__Bootstrap modal-dialog"
         style={resetModalStyle}
-        isOpen={modalOpen}
+        isOpen={modalIsOpen}
         onRequestClose={() => closeModal()}
       >
         <div className="modal-content">
