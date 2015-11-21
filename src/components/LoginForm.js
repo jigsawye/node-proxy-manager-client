@@ -32,21 +32,21 @@ export default class LoginForm extends Component {
             {loginFail ? <div className="alert alert-danger">{loginFailMessage}</div> : null}
 
             <div className="form-group">
-              <label htmlFor="username" className="col-sm-2 control-label">Username</label>
-              <div className="col-sm-10">
+              <label htmlFor="username" className="col-sm-3 col-sm-offset-2 control-label">Username</label>
+              <div className="col-sm-4">
                 <input type="text" className="form-control" id="username" ref="username" />
               </div>
             </div>
 
             <div className="form-group">
-              <label htmlFor="password" className="col-sm-2 control-label">Password</label>
-              <div className="col-sm-10">
+              <label htmlFor="password" className="col-sm-3 col-sm-offset-2 control-label">Password</label>
+              <div className="col-sm-4">
                 <input type="password" className="form-control" id="password" ref="password" />
               </div>
             </div>
 
             <div className="form-group">
-              <div className="col-sm-10 col-sm-offset-2">
+              <div className="col-sm-7 col-sm-offset-5">
                 <button type="submit" className="btn btn-primary" disabled={isLoginSubmitting}>
                   Login
                 </button>
