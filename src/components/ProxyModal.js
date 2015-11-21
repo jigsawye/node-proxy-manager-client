@@ -26,7 +26,25 @@ export default class ProxyModal extends Component {
     modalIsOpen: PropTypes.bool.isRequired,
     modalType: PropTypes.number.isRequired,
     closeModal: PropTypes.func.isRequired,
+    createProxyRequest: PropTypes.func.isRequired,
     proxy: PropTypes.object,
+  }
+
+  handleFormSubmit(e) {
+    e.preventDefault();
+
+    const proxy = {
+      listen: {
+        host: this.refs.listen_host.value,
+        port: this.refs.listen_port.value,
+      },
+      target: {
+        host: this.refs.target_host.value,
+        port: this.refs.target_port.value,
+      },
+    };
+
+    this.props.createProxyRequest(proxy);
   }
 
   render() {
@@ -78,7 +96,7 @@ export default class ProxyModal extends Component {
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-default" onClick={() => closeModal()}>Close</button>
-            <button type="button" className="btn btn-primary" onClick={() => {}}>
+            <button type="button" className="btn btn-primary" onClick={::this.handleFormSubmit}>
               {(modalType === 0) ? 'Create' : 'Save'}
             </button>
           </div>

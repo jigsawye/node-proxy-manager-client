@@ -3,6 +3,8 @@ import {
   PROXIES_FAILURE,
   OPEN_MODAL,
   CLOSE_MODAL,
+  CREATE_PROXY_SUCCESS,
+  CREATE_PROXY_FAILURE,
 } from '../actions/proxy';
 
 const defaultState = {
@@ -24,6 +26,10 @@ export default function proxy(state = defaultState, action) {
     return Object.assign({}, ...state, { modalIsOpen: true, modalType: action.modalType });
   case CLOSE_MODAL:
     return Object.assign({}, ...state, { modalIsOpen: false });
+  case CREATE_PROXY_SUCCESS:
+    return state;
+  case CREATE_PROXY_FAILURE:
+    return state;
   default:
     return state;
   }
