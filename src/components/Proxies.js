@@ -4,7 +4,6 @@ export default class Proxies extends Component {
 
   static propTypes = {
     proxies: PropTypes.array.isRequired,
-    isLoading: PropTypes.bool.isRequired,
     isError: PropTypes.bool.isRequired,
     errorMessage: PropTypes.string,
     proxiesRequest: PropTypes.func.isRequired,
@@ -20,26 +19,20 @@ export default class Proxies extends Component {
   }
 
   render() {
-    const { isLoading, isError, errorMessage, proxies } = this.props;
+    const { isError, errorMessage, proxies } = this.props;
 
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
           <div className="panel-title">Proxies</div>
         </div>
-        { isLoading &&
-          <div className="panel-body text-center">
-            <i className="fa fa-circle-o-notch fa-spin fa-4x"></i>
-          </div>
-        }
-
         { isError &&
           <div className="panel-body">
             <i className="fa fa-exclamation-circle"></i>{errorMessage}
           </div>
         }
 
-        { (! isLoading) && (! isError) &&
+        { (! isError) &&
           <table className="table table-hover">
             <tbody>
               <tr>
