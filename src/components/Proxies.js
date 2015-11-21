@@ -39,11 +39,21 @@ export default class Proxies extends Component {
         </div>
         { isError &&
           <div className="panel-body">
-            <i className="fa fa-exclamation-circle"></i>{errorMessage}
+            <h4 className="text-danger">
+              <i className="fa fa-exclamation-circle"></i>{errorMessage}
+            </h4>
           </div>
         }
 
-        { (! isError) &&
+        { (proxies.length === 0) &&
+          <div className="panel-body text-center">
+            <h4 className="text-warning">
+              <i className="fa fa-frown-o"></i> Proxies is empty, please create one.
+            </h4>
+          </div>
+        }
+
+        { (! isError) && (proxies.length !== 0) &&
           <table className="table table-hover">
             <tbody>
               <tr>
