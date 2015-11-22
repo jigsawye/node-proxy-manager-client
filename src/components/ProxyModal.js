@@ -60,7 +60,9 @@ export default class ProxyModal extends Component {
       >
         <div className="modal-content">
           <div className="modal-header">
-            <button type="button" className="close" onClick={() => closeModal()}>
+            <button type="button" className="close"
+                    style={{color: '#555555'}} aria-label="Close"
+                    onClick={() => closeModal()} >
               <span aria-hidden="true">&times;</span>
               <span className="sr-only">Close</span>
             </button>
