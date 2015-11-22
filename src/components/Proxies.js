@@ -31,10 +31,10 @@ export default class Proxies extends Component {
       <div className="panel panel-default">
         <div className="panel-heading clearfix" style={{padding: '5px 10px'}}>
           <button className="btn btn-success btn-sm pull-right" onClick={() => openModal(0)}>
-            <i className="fa fa-plus"></i> Add Proxy
+            <i className="fa fa-plus"></i>Add Proxy
           </button>
           <h3 className="panel-title" style={{margin: '5px 0', fontSize: '20px'}}>
-            <i className="fa fa-list"></i> Proxies
+            <i className="fa fa-list"></i>Proxies
           </h3>
         </div>
         { isError &&
@@ -48,7 +48,7 @@ export default class Proxies extends Component {
         { (proxies.length === 0) &&
           <div className="panel-body text-center">
             <h4 className="text-warning">
-              <i className="fa fa-frown-o"></i> Proxies is empty, please create one.
+              <i className="fa fa-frown-o fa-lg"></i>Proxies is empty, please create one.
             </h4>
           </div>
         }
@@ -58,9 +58,9 @@ export default class Proxies extends Component {
             <tbody>
               <tr>
                   <th>#</th>
-                  <th><i className="fa fa-headphones"></i> Listen</th>
-                  <th><i className="fa fa-dot-circle-o"></i> Target</th>
-                  <th><i className="fa fa-pencil-square-o"></i> Edit</th>
+                  <th><i className="fa fa-headphones"></i>Listen</th>
+                  <th><i className="fa fa-dot-circle-o"></i>Target</th>
+                  <th><i className="fa fa-cogs"></i>Manage</th>
               </tr>
               {proxies.map((proxy, index) => {
                 return (
@@ -68,7 +68,10 @@ export default class Proxies extends Component {
                       <td>{proxy.id}</td>
                       <td>{`${proxy.listen.host}(${proxy.listen.port})`}</td>
                       <td>{`${proxy.target.host}(${proxy.target.port})`}</td>
-                      <td><a href="#">Edit</a></td>
+                      <td>
+                        <a className="text-primary" href="#"><i className="fa fa-pencil-square-o fa-lg"></i></a>
+                        <a className="text-danger" href="#"><i className="fa fa-trash-o fa-lg"></i></a>
+                      </td>
                   </tr>
                 );
               })}
