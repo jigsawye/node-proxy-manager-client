@@ -9,6 +9,7 @@ export default class Proxies extends Component {
     errorMessage: PropTypes.string,
     proxiesRequest: PropTypes.func.isRequired,
     openModal: PropTypes.func.isRequired,
+    fetchProxy: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -25,7 +26,7 @@ export default class Proxies extends Component {
   }
 
   render() {
-    const { isError, errorMessage, proxies, openModal } = this.props;
+    const { isError, errorMessage, proxies, openModal, fetchProxy } = this.props;
 
     return (
       <div className="panel panel-default">
@@ -69,7 +70,9 @@ export default class Proxies extends Component {
                       <td>{`${proxy.listen.host}(${proxy.listen.port})`}</td>
                       <td>{`${proxy.target.host}(${proxy.target.port})`}</td>
                       <td>
-                        <a className="text-primary" href="#"><i className="fa fa-pencil-square-o fa-lg"></i></a>
+                        <a className="text-primary" href="#" onClick={() => fetchProxy(proxy.id)}>
+                          <i className="fa fa-pencil-square-o fa-lg"></i>
+                        </a>
                         <a className="text-danger" href="#"><i className="fa fa-trash-o fa-lg"></i></a>
                       </td>
                   </tr>

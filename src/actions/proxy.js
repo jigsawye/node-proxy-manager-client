@@ -73,3 +73,31 @@ export function createProxyRequest(proxy) {
       .catch(json => dispatch(createProxyFailure(json)));
   };
 }
+
+export const PROXY_SUCCESS = 'PROXY_SUCCESS';
+export const PROXY_FAILURE = 'PROXY_FAILURE';
+
+export function proxySuccess(proxy) {
+  return {
+    type: PROXY_SUCCESS,
+    proxy,
+  };
+}
+
+export function proxyFailure(err) {
+  return {
+    type: PROXY_FAILURE,
+    err,
+  };
+}
+
+export function fetchProxy(id) {
+  return dispatch => {
+    return fetchAPI('get', `proxies/${id}`)
+      .then(json => {
+        dispatch(proxySuccess(json));
+        dispatch(openModal(1));
+      })
+      .catch(json => dispatch(proxyFailure(json)));
+  };
+}

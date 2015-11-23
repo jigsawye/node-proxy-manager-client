@@ -48,7 +48,16 @@ export default class ProxyModal extends Component {
   }
 
   render() {
-    const { modalIsOpen, modalType, closeModal } = this.props;
+    const {
+      modalIsOpen,
+      modalType,
+      closeModal,
+      proxy: {
+        id,
+        listen,
+        target,
+      }
+    } = this.props;
 
     return (
       <Modal
@@ -66,31 +75,39 @@ export default class ProxyModal extends Component {
               <span aria-hidden="true">&times;</span>
               <span className="sr-only">Close</span>
             </button>
-            <h4 className="modal-title">{(modalType === 0) ? 'Add Proxy' : 'Edit proxy'}</h4>
+            <h4 className="modal-title">{(modalType === 0) ? 'Add Proxy' : `Edit Proxy: ${id}`}</h4>
           </div>
           <div className="modal-body">
             <form className="form-horizontal">
               <div className="form-group">
                 <label htmlFor="listen_host" className="col-sm-3 control-label">Listen Host:</label>
                 <div className="col-sm-6">
-                  <input type="text" className="form-control" id="listen_host" ref="listen_host" />
+                  <input type="text" className="form-control"
+                         id="listen_host" ref="listen_host"
+                         defaultValue={listen.host}/>
                 </div>
 
                 <label htmlFor="listen_port" className="col-sm-1 control-label">Port:</label>
                 <div className="col-sm-2">
-                  <input type="text" className="form-control" id="listen_port" ref="listen_port" />
+                  <input type="text" className="form-control"
+                         id="listen_port" ref="listen_port"
+                         defaultValue={listen.port}/>
                 </div>
               </div>
 
               <div className="form-group">
                 <label htmlFor="target_host" className="col-sm-3 control-label">Target Host:</label>
                 <div className="col-sm-6">
-                  <input type="text" className="form-control" id="target_host" ref="target_host" />
+                  <input type="text" className="form-control"
+                         id="target_host" ref="target_host"
+                         defaultValue={target.host}/>
                 </div>
 
                 <label htmlFor="target_port" className="col-sm-1 control-label">Port:</label>
                 <div className="col-sm-2">
-                  <input type="text" className="form-control" id="target_port" ref="target_port" />
+                  <input type="text" className="form-control"
+                         id="target_port" ref="target_port"
+                         defaultValue={target.port}/>
                 </div>
               </div>
 
