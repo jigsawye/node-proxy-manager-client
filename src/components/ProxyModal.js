@@ -28,11 +28,13 @@ export default class ProxyModal extends Component {
     closeModal: PropTypes.func.isRequired,
     createProxyRequest: PropTypes.func.isRequired,
     proxy: PropTypes.object,
+    updateProxy: PropTypes.func.isRequired,
   }
 
   handleFormSubmit(e) {
     e.preventDefault();
 
+    const { proxy: { id }, modalType, createProxyRequest, updateProxy } = this.props;
     const proxy = {
       listen: {
         host: this.refs.listen_host.value,
@@ -44,7 +46,11 @@ export default class ProxyModal extends Component {
       },
     };
 
-    this.props.createProxyRequest(proxy);
+    if (modalType === 0) {
+      createProxyRequest(proxy);
+    } else {
+      updateProxy(id, proxy);
+    }
   }
 
   render() {

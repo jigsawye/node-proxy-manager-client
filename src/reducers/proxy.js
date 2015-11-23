@@ -7,6 +7,8 @@ import {
   CREATE_PROXY_FAILURE,
   PROXY_SUCCESS,
   PROXY_FAILURE,
+  UPDATE_PROXY_SUCCESS,
+  UPDATE_PROXY_FAILURE,
 } from '../actions/proxy';
 
 const defaultState = {
@@ -25,7 +27,7 @@ const defaultState = {
 export default function proxy(state = defaultState, action) {
   switch (action.type) {
   case PROXIES_SUCCESS:
-    return Object.assign({}, ...state, { proxies: action.proxies });
+    return Object.assign({}, ...state, { proxies: action.proxies, isError: false });
   case PROXIES_FAILURE:
     return Object.assign({}, ...defaultState, { isError: true, errorMessage: action.err });
   case OPEN_MODAL:
@@ -39,6 +41,10 @@ export default function proxy(state = defaultState, action) {
   case PROXY_SUCCESS:
     return Object.assign({}, ...state, { proxy: action.proxy });
   case PROXY_FAILURE:
+    return state;
+  case UPDATE_PROXY_SUCCESS:
+    return state;
+  case UPDATE_PROXY_FAILURE:
     return state;
   default:
     return state;

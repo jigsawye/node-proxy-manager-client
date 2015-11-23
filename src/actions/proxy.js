@@ -101,3 +101,33 @@ export function fetchProxy(id) {
       .catch(json => dispatch(proxyFailure(json)));
   };
 }
+
+
+export const UPDATE_PROXY_SUCCESS = 'UPDATE_PROXY_SUCCESS';
+export const UPDATE_PROXY_FAILURE = 'UPDATE_PROXY_FAILURE';
+
+export function updateProxySuccess(msg) {
+  return {
+    type: UPDATE_PROXY_SUCCESS,
+    msg,
+  };
+}
+
+export function updateProxyFailure(err) {
+  return {
+    type: UPDATE_PROXY_FAILURE,
+    err,
+  };
+}
+
+export function updateProxy(id, data) {
+  return dispatch => {
+    return fetchAPI('put', `proxies/${id}`, data)
+      .then(json => {
+        dispatch(updateProxySuccess(json));
+        dispatch(proxiesRequest());
+        dispatch(closeModal());
+      })
+      .catch(json => dispatch(updateProxyFailure(json)));
+  };
+}
