@@ -131,3 +131,32 @@ export function updateProxy(id, data) {
       .catch(json => dispatch(updateProxyFailure(json)));
   };
 }
+
+
+export const DELETE_PROXY_SUCCESS = 'DELETE_PROXY_SUCCESS';
+export const DELETE_PROXY_FAILURE = 'DELETE_PROXY_FAILURE';
+
+export function deleteProxySuccess(msg) {
+  return {
+    type: DELETE_PROXY_SUCCESS,
+    msg,
+  };
+}
+
+export function deleteProxyFailure(err) {
+  return {
+    type: DELETE_PROXY_FAILURE,
+    err,
+  };
+}
+
+export function deleteProxy(id) {
+  return dispatch => {
+    return fetchAPI('delete', `proxies/${id}`)
+      .then(json => {
+        dispatch(deleteProxySuccess(json));
+        dispatch(proxiesRequest());
+      })
+      .catch(json => dispatch(deleteProxyFailure(json)));
+  };
+}

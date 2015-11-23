@@ -10,6 +10,7 @@ export default class Proxies extends Component {
     proxiesRequest: PropTypes.func.isRequired,
     openModal: PropTypes.func.isRequired,
     fetchProxy: PropTypes.func.isRequired,
+    deleteProxy: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -26,7 +27,7 @@ export default class Proxies extends Component {
   }
 
   render() {
-    const { isError, errorMessage, proxies, openModal, fetchProxy } = this.props;
+    const { isError, errorMessage, proxies, openModal, fetchProxy, deleteProxy } = this.props;
 
     return (
       <div className="panel panel-default">
@@ -73,7 +74,9 @@ export default class Proxies extends Component {
                         <a className="text-primary" href="#" onClick={() => fetchProxy(proxy.id)}>
                           <i className="fa fa-pencil-square-o fa-lg"></i>
                         </a>
-                        <a className="text-danger" href="#"><i className="fa fa-trash-o fa-lg"></i></a>
+                        <a className="text-danger" href="#" onClick={() => deleteProxy(proxy.id)}>
+                          <i className="fa fa-trash-o fa-lg"></i>
+                        </a>
                       </td>
                   </tr>
                 );

@@ -9,6 +9,8 @@ import {
   PROXY_FAILURE,
   UPDATE_PROXY_SUCCESS,
   UPDATE_PROXY_FAILURE,
+  DELETE_PROXY_SUCCESS,
+  DELETE_PROXY_FAILURE,
 } from '../actions/proxy';
 
 const defaultState = {
@@ -45,6 +47,10 @@ export default function proxy(state = defaultState, action) {
   case UPDATE_PROXY_SUCCESS:
     return state;
   case UPDATE_PROXY_FAILURE:
+    return state;
+  case DELETE_PROXY_SUCCESS:
+    return state;
+  case DELETE_PROXY_FAILURE:
     return state;
   default:
     return state;
