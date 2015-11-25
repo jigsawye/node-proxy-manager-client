@@ -1,5 +1,6 @@
 import fetchAPI from '../utils/fetch';
 import { updatePath } from 'redux-simple-router';
+import { sendSuccessNofif } from './notification';
 
 export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 export const LOGIN_SUBMITING = 'LOGIN_SUBMITING';
@@ -28,8 +29,11 @@ function loginFailure(error) {
 }
 
 export function logout() {
-  return {
-    type: LOGOUT,
+  return dispatch => {
+    dispatch(sendSuccessNofif('Logout Success!'));
+    return dispatch({
+      type: LOGOUT,
+    });
   };
 }
 
@@ -40,6 +44,7 @@ export function loginSubmit(user) {
       .then(json => {
         dispatch(loginSuccess(json.token));
         dispatch(updatePath('/proxies'));
+        dispatch(sendSuccessNofif('Login Success!'));
       })
       .catch(json => dispatch(loginFailure(json.error)));
   };
