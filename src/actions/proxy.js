@@ -3,6 +3,13 @@ import { sendSuccessNofif, sendFailureNofif } from './notification';
 
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
+export const RESET_MODAL = 'RESET_MODAL';
+
+export function resetModal() {
+  return {
+    type: RESET_MODAL,
+  };
+}
 
 export function openModal(modalType) {
   return {
@@ -12,8 +19,11 @@ export function openModal(modalType) {
 }
 
 export function closeModal() {
-  return {
-    type: CLOSE_MODAL,
+  return dispatch => {
+    dispatch(resetModal());
+    return dispatch({
+      type: CLOSE_MODAL,
+    });
   };
 }
 
@@ -31,14 +41,13 @@ export function proxiesRequest() {
   };
 }
 
-export const RESET_MODAL = 'RESET_MODAL';
-
 export function createProxyRequest(proxy) {
   return dispatch => {
     return fetchAPI('post', 'proxies', proxy)
       .then(() => {
         dispatch(proxiesRequest());
         dispatch(closeModal());
+        dispatch(resetModal());
         dispatch(sendSuccessNofif('create proxy success'));
       })
       .catch(err => dispatch(sendFailureNofif(err)));
@@ -71,6 +80,7 @@ export function updateProxy(id, data) {
       .then(() => {
         dispatch(proxiesRequest());
         dispatch(closeModal());
+        dispatch(resetModal());
         dispatch(sendSuccessNofif('Update proxy success'));
       })
       .catch(err => dispatch(sendFailureNofif(err)));
