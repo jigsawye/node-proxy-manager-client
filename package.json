@@ -11,7 +11,7 @@
     "url": "github.com/jigsawye/node-proxy-manager-client"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node devServer.js",
     "clean": "rimraf lib dist coverage",
     "lint": "eslint src test",
     "test": "NODE_ENV=test mocha --compilers js:babel/register --recursive --require ./test/setup.js",
