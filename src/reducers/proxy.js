@@ -36,22 +36,8 @@ export default function proxy(state = defaultState, action) {
     return Object.assign({}, ...state, { modalIsOpen: true, modalType: action.modalType });
   case CLOSE_MODAL:
     return Object.assign({}, ...state, { modalIsOpen: false });
-  case CREATE_PROXY_SUCCESS:
-    return state;
-  case CREATE_PROXY_FAILURE:
-    return state;
   case PROXY_SUCCESS:
     return Object.assign({}, ...state, { proxy: action.proxy });
-  case PROXY_FAILURE:
-    return state;
-  case UPDATE_PROXY_SUCCESS:
-    return state;
-  case UPDATE_PROXY_FAILURE:
-    return state;
-  case DELETE_PROXY_SUCCESS:
-    return state;
-  case DELETE_PROXY_FAILURE:
-    return state;
   default:
     return state;
   }
