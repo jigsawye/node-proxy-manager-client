@@ -9,7 +9,7 @@ import {
 
 const defaultProxy = {
   id: '',
-  listen: { host: '', port: ''},
+  listen: { host: ''},
   target: { host: '', port: ''},
 };
 

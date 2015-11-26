@@ -38,7 +38,6 @@ export default class ProxyModal extends Component {
     const proxy = {
       listen: {
         host: this.refs.listen_host.value,
-        port: this.refs.listen_port.value,
       },
       target: {
         host: this.refs.target_host.value,
@@ -87,17 +86,10 @@ export default class ProxyModal extends Component {
             <form className="form-horizontal">
               <div className="form-group">
                 <label htmlFor="listen_host" className="col-sm-3 control-label">Listen Host:</label>
-                <div className="col-sm-6">
+                <div className="col-sm-9">
                   <input type="text" className="form-control"
                          id="listen_host" ref="listen_host"
                          defaultValue={listen.host}/>
-                </div>
-
-                <label htmlFor="listen_port" className="col-sm-1 control-label">Port:</label>
-                <div className="col-sm-2">
-                  <input type="text" className="form-control"
-                         id="listen_port" ref="listen_port"
-                         defaultValue={listen.port}/>
                 </div>
               </div>
 

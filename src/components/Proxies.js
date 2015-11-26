@@ -68,8 +68,8 @@ export default class Proxies extends Component {
                 return (
                   <tr key={index}>
                       <td>{proxy.id}</td>
-                      <td>{`${proxy.listen.host}(${proxy.listen.port})`}</td>
-                      <td>{`${proxy.target.host}(${proxy.target.port})`}</td>
+                      <td><a href={`http://${proxy.listen.host}`}>{proxy.listen.host}</a></td>
+                      <td>{`${proxy.target.host}:${proxy.target.port}`}</td>
                       <td>
                         <a className="text-primary" href="#" onClick={() => fetchProxy(proxy.id)}>
                           <i className="fa fa-pencil-square-o fa-lg"></i>
