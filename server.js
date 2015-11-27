@@ -10,11 +10,11 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/index.html'));
 });
 
-app.listen(1337, '0.0.0.0', (err) => {
+app.listen(8080, '0.0.0.0', (err) => {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log('Listening at http://0.0.0.0:1337');
+  console.log('Listening at http://0.0.0.0:8080');
 });

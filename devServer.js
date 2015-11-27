@@ -20,11 +20,11 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(1337, 'localhost', (err) => {
+app.listen(8080, 'localhost', (err) => {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log('Listening at http://localhost:1337');
+  console.log('Listening at http://localhost:8080');
 });
