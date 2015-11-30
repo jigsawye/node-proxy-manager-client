@@ -1,4 +1,3 @@
-/* global __DEVTOOLS__ */
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import promiseMiddleware from 'redux-promise';
@@ -14,12 +13,10 @@ const loggerMiddleware = createLogger({
 
 let createStoreWithMiddleware;
 
-if (typeof __DEVTOOLS__ !== 'undefined' && __DEVTOOLS__) {
-  const { devTools, persistState } = require('redux-devtools');
+if (process.env.NODE_ENV === 'development') {
   createStoreWithMiddleware = compose(
     applyMiddleware(thunkMiddleware, promiseMiddleware, loggerMiddleware),
-    devTools(),
-    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+    window.devToolsExtension ? window.devToolsExtension() : f => f
   )(createStore);
 } else {
   createStoreWithMiddleware = applyMiddleware(
@@ -27,7 +24,6 @@ if (typeof __DEVTOOLS__ !== 'undefined' && __DEVTOOLS__) {
     promiseMiddleware
   )(createStore);
 }
-
 
 /**
  * Creates a preconfigured store.

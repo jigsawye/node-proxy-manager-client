@@ -12,12 +12,6 @@ const history = createBrowserHistory();
 
 syncReduxAndRouter(history, store);
 
-if (typeof __DEVTOOLS__ !== 'undefined' && __DEVTOOLS__) {
-  const createDevToolsWindow = require('../utils/createDevToolsWindow');
-  createDevToolsWindow(store);
-}
-
-
 export default class Root extends Component {
   render() {
     return (
