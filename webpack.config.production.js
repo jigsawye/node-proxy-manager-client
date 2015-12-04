@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var config = require('./config');
 
 module.exports = {
   devtool: 'source-map',
@@ -12,7 +13,8 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        'NODE_ENV': JSON.stringify('production'),
+        'API_PORT': JSON.stringify(config.port.api)
       }
     }),
     new webpack.optimize.UglifyJsPlugin({

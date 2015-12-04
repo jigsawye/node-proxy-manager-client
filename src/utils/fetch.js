@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch';
 import { getToken } from './auth';
 
+const BASE_URL = `http://${window.location.hostname}:${process.env.API_PORT}`;
+
 export default function fetchAPI(method, path, data = {}) {
   const options = {
     method: method,
@@ -15,7 +17,7 @@ export default function fetchAPI(method, path, data = {}) {
     options.body = JSON.stringify(data);
   }
 
-  return fetch(`http://${window.location.hostname}:3000/${path}`, options)
+  return fetch(`${BASE_URL}/${path}`, options)
   .then(res => res.json().then(json => ({ json, res })))
   .then(({ json, res }) => {
     if (! res.ok) {

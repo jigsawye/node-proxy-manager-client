@@ -3,6 +3,7 @@ var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
 var config = require('./webpack.config');
+var serverConfig = require('./config');
 
 var app = express();
 var compiler = webpack(config);
@@ -20,11 +21,11 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(8080, 'localhost', (err) => {
+app.listen(serverConfig.port.client, 'localhost', (err) => {
   if (err) {
     console.log(err);
     return;
   }
 
-  console.log('Listening at http://localhost:8080');
+  console.log('Listening at http://localhost:' + serverConfig.port.client);
 });
